@@ -1,5 +1,7 @@
+import PokemonCard from "@/components/PokemonCard";
 import { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { ScrollView, Text } from "react-native";
+
 
 export default function Index() {
 
@@ -21,11 +23,11 @@ export default function Index() {
     console.log(data);
   };
   return (
-    <View>
+    <ScrollView style={{ padding: 20 }}>
       <Text>Edit app/index.tsx to edit this screen.</Text>
       {results.map((pokemon) => (
-        <Text key={pokemon.name}>{pokemon.name} </Text>
+        < PokemonCard key={pokemon.name} name={pokemon.name} url={pokemon.url} />
       ))}
-    </View>
+    </ScrollView>
   );
 }
