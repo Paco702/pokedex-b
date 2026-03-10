@@ -1,7 +1,7 @@
 import PokemonCard from "@/components/PokemonCard";
-import { useEffect, useState } from "react";
-import { ScrollView, Text } from "react-native";
-
+import { router } from "expo-router";
+import { useEffect, useState, } from "react";
+import { Button, ScrollView } from "react-native";
 
 export default function Index() {
 
@@ -23,10 +23,16 @@ export default function Index() {
     console.log(data);
   };
   return (
-    <ScrollView style={{ padding: 20 }}>
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+    <ScrollView>
+      <Button title="Pokémon" onPress={() => router.push("../pokemon")} />
+      <Button title="Nueva Pantalla" onPress={() => router.push("/new_screen")} />
+      <Button title="Dinamic route" onPress={() => router.push("/pokemon/[name]")} />
+
       {results.map((pokemon) => (
-        < PokemonCard key={pokemon.name} name={pokemon.name} url={pokemon.url} />
+        <PokemonCard
+          key={pokemon.name}
+          name={pokemon.name}
+          url={pokemon.url} />
       ))}
     </ScrollView>
   );
